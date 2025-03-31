@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,36 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // Teal and mint custom colors
+        teal: {
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
+        },
+        mint: {
+          50: '#f8fefc',
+          100: '#e6fcf5',
+          200: '#c3f9e9',
+          300: '#9cf2d9',
+          400: '#5fe3c0',
+          500: '#2dcca7',
+          600: '#18a88b',
+          700: '#168571',
+          800: '#146858',
+          900: '#115546',
+        },
+        emerald: {
+          500: '#10b981',
+          600: '#059669',
+        }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
