@@ -31,4 +31,11 @@ export interface ExpenseSummary {
     budget: number;
     percentage: number;
   }[];
+  stats?: {
+    count: number;
+    min: number;
+    max: number;
+    avg: number;
+    median: number;
+  };
 }
