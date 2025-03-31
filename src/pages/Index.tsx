@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from "react";
 import ExpenseForm from "@/components/ExpenseForm";
-import ExpenseList from "@/components/ExpenseList";
 import Dashboard from "@/components/Dashboard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/components/ui/use-toast";
@@ -72,10 +71,9 @@ const Index = () => {
 
       <div className="max-w-5xl mx-auto">
         <Tabs defaultValue="dashboard" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
             <TabsTrigger value="add">Add Expense</TabsTrigger>
-            <TabsTrigger value="history">History</TabsTrigger>
           </TabsList>
           
           <TabsContent value="dashboard" className="space-y-4">
@@ -92,16 +90,6 @@ const Index = () => {
               <ExpenseForm 
                 onAddExpense={handleAddExpense} 
                 categories={categories}
-              />
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="history">
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <ExpenseList 
-                expenses={expenses} 
-                categories={categories}
-                onDeleteExpense={handleDeleteExpense}
               />
             </div>
           </TabsContent>

@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ExpenseData, CategoryData } from "@/types/expense";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { Calendar, DollarSign, TrendingUp, Wallet } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface DashboardProps {
   expenses: ExpenseData[];
@@ -209,6 +210,13 @@ const Dashboard = ({ expenses, categories, summary, isLoading }: DashboardProps)
               const spent = categoryExpenses.reduce((sum, expense) => sum + expense.amount, 0);
               const percentage = (spent / category.budget) * 100;
               
+              const progressColor = 
+                percentage > 100 
+                  ? "bg-red-500" 
+                  : percentage > 80 
+                    ? "bg-yellow-500" 
+                    : "bg-emerald-500";
+              
               return (
                 <div key={category.id} className="space-y-1">
                   <div className="flex justify-between text-sm">
@@ -224,13 +232,12 @@ const Dashboard = ({ expenses, categories, summary, isLoading }: DashboardProps)
                   <Progress 
                     value={percentage} 
                     className="h-2"
-                    indicatorClassName={
-                      percentage > 100 
-                        ? "bg-red-500" 
-                        : percentage > 80 
-                          ? "bg-yellow-500" 
-                          : "bg-emerald-500"
-                    }
+                    // Use className for styling the indicator instead of indicatorClassName
+                    className={cn("h-2", {
+                      "[&>div]:bg-red-500": percentage > 100,
+                      "[&>div]:bg-yellow-500": percentage <= 100 && percentage > 80,
+                      "[&>div]:bg-emerald-500": percentage <= 80,
+                    })}
                   />
                 </div>
               );
